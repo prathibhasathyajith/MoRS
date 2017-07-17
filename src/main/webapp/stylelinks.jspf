@@ -1,0 +1,18 @@
+<style>
+    @font-face {
+        font-family: "allerB1";
+        src: url("resources/font/AllerDisplay.woff") format('woff');
+    }
+    @font-face {
+        font-family: "allerB2";
+        src: url("resources/font/Aller_Bd.woff") format('woff');
+    }
+</style>
+<sj:head jqueryui="true" jquerytheme="mytheme2" customBasepath="resources/themes"/>  
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootwatch/bootstrap.css"/>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/fontawesome/css/font-awesome.css"/>
+
+<!--<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.js"></script>-->
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.blockUI.js"></script>
+<!--<script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/JqureyUI.js"></script>-->
+
