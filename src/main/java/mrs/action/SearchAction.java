@@ -292,7 +292,6 @@ public class SearchAction extends ActionSupport implements ModelDriven<Object> {
             List<SearchDataBean> dataList = dao.getSearchList(inputBean, rows, from, orderBy);
             List<SearchDataBean> dataListCSV = dao.getSearchListForCSV(inputBean);
             List<LatLngBean> dataListMap = dao.getLatLngForMap(inputBean);
-//            List<SummaryBean> summaryList = dao.getDataForSummary();
 
             session.setAttribute("SEARCH_BEAN", dataList);
             session.setAttribute("SEARCH_BEAN_CSV", dataListCSV);
@@ -339,7 +338,6 @@ public class SearchAction extends ActionSupport implements ModelDriven<Object> {
 
             SearchDAO dao = new SearchDAO();
 
-//            List<SummaryBean> summaryList = dao.getDataForSummary();
             List<SummaryBean> summaryList = dao.getDataForSummary_edited();
             session.setAttribute("SUMMARY_LIST", summaryList);
 
@@ -384,10 +382,8 @@ public class SearchAction extends ActionSupport implements ModelDriven<Object> {
         String q_list = "";
         try {
 
-//            HttpSession session = ServletActionContext.getRequest().getSession(false);
             outputStream = new ByteArrayOutputStream();
 
-//            List<SearchDataBean> datalist = (List<SearchDataBean>) session.getAttribute("SEARCH_BEAN_CSV");
             SearchDAO dao = new SearchDAO();
             CommonDAO cdao = new CommonDAO();
 
@@ -396,12 +392,7 @@ public class SearchAction extends ActionSupport implements ModelDriven<Object> {
             List<Question> qlist = cdao.getQuestionList();
             Map<String, String> qlistmap = cdao.getQuestionListMap();
 
-//            System.out.println("qlist new " + dao.getQlistForCSV(qlist));
-            q_list = dao.getQlistForCSV(qlist);
-//            for (Question question : qlist) {
-//                String as = "," + question.getRevenueSource().getCode() + "_" + question.getQuestion();
-//                q_list += as;
-//            }
+            q_list = dao.getQlistForCSV_edited(qlist);
 
             column_names = "No,Survey ID,Enumerator,Time Stamp,Province,District,Local Authority,GND,Latitude,Longitude";
 
@@ -428,9 +419,6 @@ public class SearchAction extends ActionSupport implements ModelDriven<Object> {
                     String as = "," + datalist.get(i).getqList().get(question.getQCode());
                     a_list += as;
                 }
-//                
-//                System.out.println("a_list "+ a_list);
-//                System.out.println("a_list2 " + a_list2);
 
                 rows.add(
                         datalist.get(i).getIdno() + ","

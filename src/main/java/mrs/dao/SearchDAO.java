@@ -134,19 +134,19 @@ public class SearchDAO {
             + "left outer join district ds on ds.CODE = la.DISTRICT_CODE "
             + "left outer join province pv on pv.CODE = ds.PROVINCE_CODE ";
 
-    String SUMMARY_SQL = "select "
-            + "rs.CODE rsd , "
-            + "la.CODE lad "
-            + "from survey_data sd "
-            + "left outer join user u on u.KEYID = sd.USER_ID "
-            + "left outer join revenue_source rs on rs.CODE = sd.REVENUE_SRC_CODE "
-            + "left outer join local_authority la on la.CODE = sd.LA_CODE "
-            + "left outer join gnd g on g.CODE = sd.GND_CODE "
-            + "left outer join user_answer ua on ua.SURVEY_ID = sd.ID "
-            + "left outer join question q on q.Q_CODE = ua.Q_CODE "
-            + "left outer join answer a on a.A_CODE = ua.A_CODE "
-            + "left outer join district ds on ds.CODE = la.DISTRICT_CODE "
-            + "left outer join province pv on pv.CODE = ds.PROVINCE_CODE ";
+//    String SUMMARY_SQL = "select "
+//            + "rs.CODE rsd , "
+//            + "la.CODE lad "
+//            + "from survey_data sd "
+//            + "left outer join user u on u.KEYID = sd.USER_ID "
+//            + "left outer join revenue_source rs on rs.CODE = sd.REVENUE_SRC_CODE "
+//            + "left outer join local_authority la on la.CODE = sd.LA_CODE "
+//            + "left outer join gnd g on g.CODE = sd.GND_CODE "
+//            + "left outer join user_answer ua on ua.SURVEY_ID = sd.ID "
+//            + "left outer join question q on q.Q_CODE = ua.Q_CODE "
+//            + "left outer join answer a on a.A_CODE = ua.A_CODE "
+//            + "left outer join district ds on ds.CODE = la.DISTRICT_CODE "
+//            + "left outer join province pv on pv.CODE = ds.PROVINCE_CODE ";
 
     String SUMMARY_SQL2 = "select "
             + "sd.REVENUE_SRC_CODE rsd , "
@@ -189,27 +189,27 @@ public class SearchDAO {
             + "left outer join district ds on ds.CODE = la.DISTRICT_CODE "
             + "left outer join province pv on pv.CODE = ds.PROVINCE_CODE  ";
 
-    String ACTION_SQL2 = "select "
-            + "sd.id , "//0
-            + "sd.user uu , "//1
-            + "ua.ANSWER ad , "//2
-            + "q.QUESTION qd , "//3
-            + "sd.LATITUDE, "//4
-            + "sd.LONGITUDE , "//5
-            + "rs.DESCRIPTION rsd , "//6
-            + "la.DESCRIPTION lad , "//7
-            + "sd.IMAGE  "//8
-
-            + "from SurveyData sd  "
-            + "left outer join user u on u.keyid = sd.USER_ID  "
-            + "left outer join revenue_source rs on rs.CODE = sd.REVENUE_SRC_CODE  "
-            + "left outer join local_authority la on la.CODE = sd.LA_CODE  "
-            + "left outer join gnd g on g.CODE = sd.GND_CODE  "
-            + "left outer join user_answer ua on ua.SURVEY_ID = sd.ID  "
-            + "left outer join question q on q.Q_CODE = ua.Q_CODE  "
-            + "left outer join answer a on a.A_CODE = ua.A_CODE  "
-            + "left outer join district ds on ds.CODE = la.DISTRICT_CODE "
-            + "left outer join province pv on pv.CODE = ds.PROVINCE_CODE  ";
+//    String ACTION_SQL2 = "select "
+//            + "sd.id , "//0
+//            + "sd.user uu , "//1
+//            + "ua.ANSWER ad , "//2
+//            + "q.QUESTION qd , "//3
+//            + "sd.LATITUDE, "//4
+//            + "sd.LONGITUDE , "//5
+//            + "rs.DESCRIPTION rsd , "//6
+//            + "la.DESCRIPTION lad , "//7
+//            + "sd.IMAGE  "//8
+//
+//            + "from SurveyData sd  "
+//            + "left outer join user u on u.keyid = sd.USER_ID  "
+//            + "left outer join revenue_source rs on rs.CODE = sd.REVENUE_SRC_CODE  "
+//            + "left outer join local_authority la on la.CODE = sd.LA_CODE  "
+//            + "left outer join gnd g on g.CODE = sd.GND_CODE  "
+//            + "left outer join user_answer ua on ua.SURVEY_ID = sd.ID  "
+//            + "left outer join question q on q.Q_CODE = ua.Q_CODE  "
+//            + "left outer join answer a on a.A_CODE = ua.A_CODE  "
+//            + "left outer join district ds on ds.CODE = la.DISTRICT_CODE "
+//            + "left outer join province pv on pv.CODE = ds.PROVINCE_CODE  ";
 
     public SurveyData getImage(String sid) throws Exception {
         SurveyData sdata = new SurveyData();
@@ -718,84 +718,84 @@ public class SearchDAO {
         return CsvBeanList;
     }
 
-    public List<SearchSetBean> makeSearchList(List<Object[]> lists) throws Exception {
-        List<SearchSetBean> SearchBeanSetList = new ArrayList<SearchSetBean>();
-
-        HttpSession sessionHTTP = ServletActionContext.getRequest().getSession(false);
-
-        List<Object[]> list = (List<Object[]>) sessionHTTP.getAttribute("CSV_QUERY_LIST_DATA");
-
-        ArrayList<ArrayList<String>> csv = new ArrayList<ArrayList<String>>();
-        ArrayList<ArrayList<String>> records = new ArrayList<ArrayList<String>>();
-        ArrayList<String> sid = new ArrayList<String>();
-        ArrayList<String> yesList = new ArrayList<String>();
-
-        for (Object[] Bean : lists) {
-            ArrayList obj = new ArrayList();
-            obj.add(String.valueOf(Bean[10]));//sid -0
-            obj.add(String.valueOf(Bean[0]));//user -1
-            obj.add(String.valueOf(Bean[14]));//time -2
-            obj.add(String.valueOf(Bean[8]));//district -3
-            obj.add(String.valueOf(Bean[9]));//province -4
-            obj.add(String.valueOf(Bean[11]));//rs code -5
-            obj.add(String.valueOf(Bean[12]));//la code -6
-            obj.add(String.valueOf(Bean[13]));//question code -7
-            obj.add(String.valueOf(Bean[4]));//answer -8
-            obj.add(String.valueOf(Bean[3]));//09 -gnd
-            obj.add(String.valueOf(Bean[6]));//10 lat
-            obj.add(String.valueOf(Bean[7]));//11 lng
-
-            if (!sid.contains(String.valueOf(Bean[10]))) {
-                ArrayList<String> record = new ArrayList<String>();
-                sid.add(String.valueOf(Bean[10]));
-
-                record.add(String.valueOf(Bean[10]));
-                record.add(String.valueOf(Bean[0]));
-                record.add(String.valueOf(Bean[14]));
-                record.add(String.valueOf(Bean[8]));
-                record.add(String.valueOf(Bean[9]));
-                record.add(String.valueOf(Bean[12]));
-                record.add(String.valueOf(Bean[6]));
-                record.add(String.valueOf(Bean[7]));
-                record.add(String.valueOf(Bean[11]));
-                record.add(String.valueOf(Bean[3]));
-
-                records.add(record);
-
-            }
-
-            csv.add(obj);
-        }
-
-        for (ArrayList<String> arrayList : csv) {
-
-            if (!yesList.contains(arrayList.get(9))) {
-                yesList.add(arrayList.get(9));
-            }
-        }
-
-        for (int i = 0; i < records.size(); i++) {
-            SearchSetBean csvfile = new SearchSetBean();
-
-            csvfile.setIdno(Integer.toString(i + 1));
-            csvfile.setSid(records.get(i).get(0));
-            csvfile.setUser(records.get(i).get(1));
-            csvfile.setTimeStamp(records.get(i).get(2));
-            csvfile.setProvince(records.get(i).get(4));
-            csvfile.setDistrict(records.get(i).get(3));
-            csvfile.setLocalAuthority(records.get(i).get(5));
-            csvfile.setLat(records.get(i).get(6));
-            csvfile.setLng(records.get(i).get(7));
-            csvfile.setRevenueS(records.get(i).get(8));
-            csvfile.setGnds(records.get(i).get(9));
-            csvfile.setqList(this.getQAListForSID2(records.get(i).get(0), csv));
-
-            SearchBeanSetList.add(csvfile);
-
-        }
-
-        return SearchBeanSetList;
-    }
+//    public List<SearchSetBean> makeSearchList(List<Object[]> lists) throws Exception {
+//        List<SearchSetBean> SearchBeanSetList = new ArrayList<SearchSetBean>();
+//
+//        HttpSession sessionHTTP = ServletActionContext.getRequest().getSession(false);
+//
+//        List<Object[]> list = (List<Object[]>) sessionHTTP.getAttribute("CSV_QUERY_LIST_DATA");
+//
+//        ArrayList<ArrayList<String>> csv = new ArrayList<ArrayList<String>>();
+//        ArrayList<ArrayList<String>> records = new ArrayList<ArrayList<String>>();
+//        ArrayList<String> sid = new ArrayList<String>();
+//        ArrayList<String> yesList = new ArrayList<String>();
+//
+//        for (Object[] Bean : lists) {
+//            ArrayList obj = new ArrayList();
+//            obj.add(String.valueOf(Bean[10]));//sid -0
+//            obj.add(String.valueOf(Bean[0]));//user -1
+//            obj.add(String.valueOf(Bean[14]));//time -2
+//            obj.add(String.valueOf(Bean[8]));//district -3
+//            obj.add(String.valueOf(Bean[9]));//province -4
+//            obj.add(String.valueOf(Bean[11]));//rs code -5
+//            obj.add(String.valueOf(Bean[12]));//la code -6
+//            obj.add(String.valueOf(Bean[13]));//question code -7
+//            obj.add(String.valueOf(Bean[4]));//answer -8
+//            obj.add(String.valueOf(Bean[3]));//09 -gnd
+//            obj.add(String.valueOf(Bean[6]));//10 lat
+//            obj.add(String.valueOf(Bean[7]));//11 lng
+//
+//            if (!sid.contains(String.valueOf(Bean[10]))) {
+//                ArrayList<String> record = new ArrayList<String>();
+//                sid.add(String.valueOf(Bean[10]));
+//
+//                record.add(String.valueOf(Bean[10]));
+//                record.add(String.valueOf(Bean[0]));
+//                record.add(String.valueOf(Bean[14]));
+//                record.add(String.valueOf(Bean[8]));
+//                record.add(String.valueOf(Bean[9]));
+//                record.add(String.valueOf(Bean[12]));
+//                record.add(String.valueOf(Bean[6]));
+//                record.add(String.valueOf(Bean[7]));
+//                record.add(String.valueOf(Bean[11]));
+//                record.add(String.valueOf(Bean[3]));
+//
+//                records.add(record);
+//
+//            }
+//
+//            csv.add(obj);
+//        }
+//
+//        for (ArrayList<String> arrayList : csv) {
+//
+//            if (!yesList.contains(arrayList.get(9))) {
+//                yesList.add(arrayList.get(9));
+//            }
+//        }
+//
+//        for (int i = 0; i < records.size(); i++) {
+//            SearchSetBean csvfile = new SearchSetBean();
+//
+//            csvfile.setIdno(Integer.toString(i + 1));
+//            csvfile.setSid(records.get(i).get(0));
+//            csvfile.setUser(records.get(i).get(1));
+//            csvfile.setTimeStamp(records.get(i).get(2));
+//            csvfile.setProvince(records.get(i).get(4));
+//            csvfile.setDistrict(records.get(i).get(3));
+//            csvfile.setLocalAuthority(records.get(i).get(5));
+//            csvfile.setLat(records.get(i).get(6));
+//            csvfile.setLng(records.get(i).get(7));
+//            csvfile.setRevenueS(records.get(i).get(8));
+//            csvfile.setGnds(records.get(i).get(9));
+//            csvfile.setqList(this.getQAListForSID2(records.get(i).get(0), csv));
+//
+//            SearchBeanSetList.add(csvfile);
+//
+//        }
+//
+//        return SearchBeanSetList;
+//    }
 
     public Map<String, String> getQAListForSID(String SID, ArrayList<ArrayList<String>> array) throws Exception {
 
@@ -819,162 +819,6 @@ public class SearchDAO {
 
         return QAlist;
 
-    }
-
-    public Map<String, String> getQAListForSID2(String SID, ArrayList<ArrayList<String>> array) throws Exception {
-
-        CommonDAO dao = new CommonDAO();
-        Map<String, String> QAlist = dao.getQuestionListMap2();
-
-        for (ArrayList<String> arrayList : array) {
-
-            if (arrayList.get(0).equals(SID)) {
-                QAlist.put(arrayList.get(7), arrayList.get(8));
-            }
-        }
-
-        return QAlist;
-
-    }
-
-    public List<SummaryBean> getDataForSummary() throws Exception {
-
-        List<SummaryBean> summaryList = new ArrayList<SummaryBean>();
-        Session session = null;
-
-        ArrayList<ArrayList<String>> RAarray = new ArrayList<ArrayList<String>>();
-
-        ArrayList<String> COESarray = new ArrayList<String>();
-        ArrayList<String> LADBarray = new ArrayList<String>();
-        ArrayList<String> PALOarray = new ArrayList<String>();
-        ArrayList<String> REDFarray = new ArrayList<String>();
-        ArrayList<String> REISarray = new ArrayList<String>();
-        ArrayList<String> REMCarray = new ArrayList<String>();
-        ArrayList<String> RETMarray = new ArrayList<String>();
-        ArrayList<String> SADDarray = new ArrayList<String>();
-
-        try {
-
-            session = HibernateInit.sessionFactory.openSession();
-
-            String sqlCount = this.COUNTS + " ";
-            Query queryCount = session.createSQLQuery(sqlCount);
-
-            List countList = queryCount.list();
-            BigInteger count = (BigInteger) countList.get(0);
-
-            if (count.longValue() > 0) {
-                String sqlQ = this.SUMMARY_SQL + " ";
-                List<Object[]> chequeList = (List<Object[]>) session.createSQLQuery(sqlQ).list();
-
-                ArrayList<Map<String, String>> full = new ArrayList<Map<String, String>>();
-
-                for (Object[] Bean : chequeList) {
-
-                    Map<String, String> LaRs = new HashMap<String, String>();
-
-                    LaRs.put(String.valueOf(Bean[0]), String.valueOf(Bean[1]));
-                    full.add(LaRs);
-
-                }
-
-                for (Map<String, String> full1 : full) {
-                    if (full1.get(this.COES) != null) {
-                        COESarray.add(full1.get(this.COES));
-                    };
-                }
-                RAarray.add(COESarray);
-                for (Map<String, String> full1 : full) {
-                    if (full1.get(this.LADB) != null) {
-                        LADBarray.add(full1.get(this.LADB));
-                    };
-                }
-                RAarray.add(LADBarray);
-                for (Map<String, String> full1 : full) {
-                    if (full1.get(this.PALO) != null) {
-                        PALOarray.add(full1.get(this.PALO));
-                    };
-                }
-                RAarray.add(PALOarray);
-                for (Map<String, String> full1 : full) {
-                    if (full1.get(this.REDF) != null) {
-                        REDFarray.add(full1.get(this.REDF));
-                    };
-                }
-                RAarray.add(REDFarray);
-                for (Map<String, String> full1 : full) {
-                    if (full1.get(this.REIS) != null) {
-                        REISarray.add(full1.get(this.REIS));
-                    };
-                }
-                RAarray.add(REISarray);
-                for (Map<String, String> full1 : full) {
-                    if (full1.get(this.REMC) != null) {
-                        REMCarray.add(full1.get(this.REMC));
-                    };
-                }
-                RAarray.add(REMCarray);
-                for (Map<String, String> full1 : full) {
-                    if (full1.get(this.RETM) != null) {
-                        RETMarray.add(full1.get(this.RETM));
-                    };
-                }
-                RAarray.add(RETMarray);
-                for (Map<String, String> full1 : full) {
-                    if (full1.get(this.SADD) != null) {
-                        SADDarray.add(full1.get(this.SADD));
-                    };
-                }
-                RAarray.add(SADDarray);
-
-                CommonDAO dao = new CommonDAO();
-
-                for (int i = 0; i < this.getlaDISTINCT().size(); i++) {
-
-                    int total = 0;
-
-                    ArrayList<Integer> countRA = this.getLAcoutForAllRA(this.getlaDISTINCT().get(i), RAarray);
-                    SummaryBean bean = new SummaryBean();
-
-                    bean.setId(Integer.toString(i + 1));
-                    bean.setLacode(dao.getLAfromCode(this.getlaDISTINCT().get(i)));
-
-                    bean.setCoes(Integer.toString(countRA.get(0)));
-                    bean.setLadb(Integer.toString(countRA.get(1)));
-                    bean.setPalo(Integer.toString(countRA.get(2)));
-                    bean.setRedf(Integer.toString(countRA.get(3)));
-                    bean.setReis(Integer.toString(countRA.get(4)));
-                    bean.setRemc(Integer.toString(countRA.get(5)));
-                    bean.setRetm(Integer.toString(countRA.get(6)));
-                    bean.setSadd(Integer.toString(countRA.get(7)));
-
-                    total = countRA.get(0)
-                            + countRA.get(1)
-                            + countRA.get(2)
-                            + countRA.get(3)
-                            + countRA.get(4)
-                            + countRA.get(5)
-                            + countRA.get(6)
-                            + countRA.get(7);
-                    bean.setTotal(Integer.toString(total));
-                    bean.setFullCount(count.longValue());
-                    summaryList.add(bean);
-
-                }
-
-            }
-
-        } catch (Exception e) {
-            throw e;
-        } finally {
-            try {
-                session.flush();
-                session.close();
-            } catch (Exception e) {
-                throw e;
-            }
-        }
-        return summaryList;
     }
 
     public List<SummaryBean> getDataForSummary_edited() throws Exception {
@@ -1111,32 +955,6 @@ public class SearchDAO {
         }
 
         return rscount;
-
-    }
-
-    public ArrayList<Integer> getLAcoutForAllRA(String LACODE, ArrayList<ArrayList<String>> RAfullarray) {
-        ArrayList<Integer> count = new ArrayList<Integer>();
-
-        for (int i = 0; i < RAfullarray.size(); i++) {
-            count.add(this.getLACountForRAarray(LACODE, RAfullarray.get(i)));
-        }
-        return count;
-
-    }
-
-    public Integer getLACountForRAarray(String LACODE, ArrayList<String> RAarray) {
-        int count = 0;
-
-        if (RAarray.contains(LACODE)) {
-            for (String string : RAarray) {
-                if (string.equals(LACODE)) {
-                    count++;
-                }
-            }
-        } else {
-            count = 0;
-        }
-        return count;
 
     }
 
@@ -1764,74 +1582,33 @@ public class SearchDAO {
         return des;
     }
 
-    public String getQlistForCSV(List<Question> qlist) throws Exception {
-
+    public String getQlistForCSV_edited(List<Question> qlist) throws Exception {
+        String q_list = ",";
         CommonDAO dao = new CommonDAO();
 
-//        ArrayList<ArrayList<String>> reveS = new ArrayList<ArrayList<String>>();
-//        ArrayList<String> reveSdislist = new ArrayList<String>();
-//        ArrayList<String> reveScodelist = new ArrayList<String>();
-        List<RevenueSource> rslist = new ArrayList<RevenueSource>();
-        rslist = dao.getRevenueSourceList();
+        List<RevenueSource> rsList = dao.getRevenueSourceList();
 
-//        for (RevenueSource revenueSource : rslist) {
-//            reveSdislist.add(","+revenueSource.getDescription());
-//            reveScodelist.add(revenueSource.getCode());
-//        }
-//        
-//        for (Question question : qlist) {
-//            if(!reveScodelist.contains(question.getRevenueSource().getCode())){
-//                reveScodelist.add(question.getRevenueSource().getCode());
-//            }
-//        }
-//        
-//        System.out.println("sasasa afcaedsf " + reveSdislist);
-//        
-        String q_list = "";
-        String q_listCOES = ",Commercial Establishments";
-        String q_listLADB = ",Large Advertisement Boards";
-        String q_listPALO = ",Parking Lots";
-        String q_listREDF = ",Rental Daily Fare";
-        String q_listREIS = ",Rental Individual Shops";
-        String q_listREMC = ",Rental Market Complex (Owned by LA)";
-        String q_listRETM = ",Rental Temporary";
-        String q_listSADD = ",Small Advertisement Display";
+        String RSname = "";
+        String qlists = "";
+        for (int i = 0; i < rsList.size(); i++) {
+            RSname = rsList.get(i).getDescription();
 
-        for (Question question : qlist) {
+            for (int j = 0; j < qlist.size(); j++) {
+                if (rsList.get(i).getCode().equals(qlist.get(j).getRevenueSource().getCode())) {
 
-            if (question.getQuestion().split(",").length > 1) {
-                question.setQuestion('"' + question.getQuestion() + '"');
-                System.out.println("question split " + question.getQuestion());
-            };
+                    if (qlist.get(j).getQuestion().split(",").length > 1) {
+                        qlist.get(j).setQuestion('"' + qlist.get(j).getQuestion() + '"');
+                    };
 
-            if (question.getRevenueSource().getCode().equals(COES)) {
-                q_listCOES += "," + question.getQuestion();
+                    qlists += "," + qlist.get(j).getQuestion();
+                }
             }
-            if (question.getRevenueSource().getCode().equals(LADB)) {
-                q_listLADB += "," + question.getQuestion();
-            }
-            if (question.getRevenueSource().getCode().equals(PALO)) {
-                q_listPALO += "," + question.getQuestion();
-            }
-            if (question.getRevenueSource().getCode().equals(REDF)) {
-                q_listREDF += "," + question.getQuestion();
-            }
-            if (question.getRevenueSource().getCode().equals(REIS)) {
-                q_listREIS += "," + question.getQuestion();
-            }
-            if (question.getRevenueSource().getCode().equals(REMC)) {
-                q_listREMC += "," + question.getQuestion();
-            }
-            if (question.getRevenueSource().getCode().equals(RETM)) {
-                q_listRETM += "," + question.getQuestion();
-            }
-            if (question.getRevenueSource().getCode().equals(SADD)) {
-                q_listSADD += "," + question.getQuestion();
-            }
+            RSname = RSname + qlists + ",";
+            qlists = "";
+
+            q_list += RSname;
 
         }
-        q_list = q_listCOES + q_listLADB + q_listPALO + q_listREDF + q_listREIS + q_listREMC + q_listRETM + q_listSADD;
-
         return q_list;
     }
 
@@ -1854,13 +1631,12 @@ public class SearchDAO {
 
     public BufferedImage getScaledInstance(BufferedImage img, int targetWidth, int targetHeight, Object hint, boolean higherQuality) {
 
-//        int type = (img.getTransparency() == Transparency.BITMASK) ? BufferedImage.TYPE_INT_RGB : BufferedImage.TYPE_INT_ARGB;
         int type = higherQuality ? BufferedImage.TYPE_INT_RGB : BufferedImage.TYPE_INT_ARGB;
         BufferedImage ret = (BufferedImage) img;
-        
-        targetWidth = targetWidth/this.imageSizeDivideFac(img);
-        targetHeight = targetHeight/this.imageSizeDivideFac(img);
-        
+
+        targetWidth = targetWidth / this.imageSizeDivideFac(img);
+        targetHeight = targetHeight / this.imageSizeDivideFac(img);
+
         int w, h;
         if (higherQuality) {
             w = img.getWidth();
@@ -1889,9 +1665,7 @@ public class SearchDAO {
 
             BufferedImage tmp = new BufferedImage(w, h, type);
             Graphics2D g2 = tmp.createGraphics();
-//            g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, hint);
-//            g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-//            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
             g2.drawImage(ret, 0, 0, w, h, null);
             g2.dispose();
 

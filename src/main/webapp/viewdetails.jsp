@@ -164,15 +164,15 @@
 
         </div>
         <script>
-           function imgTOcenter() {
-               var imgHeight = $('#imageID').height();
-               var centerVal = (400 - imgHeight) / 2;
-               alert("imgHeight - " + imgHeight + " centerVal - " + centerVal);
-
-               $('#imageID').css('margin-top', centerVal + 'px');
-
-           }
-           imgTOcenter();
+//           function imgTOcenter() {
+//               var imgHeight = $('#imageID').height();
+//               var centerVal = (400 - imgHeight) / 2;
+//               alert("imgHeight - " + imgHeight + " centerVal - " + centerVal);
+//
+//               $('#imageID').css('margin-top', centerVal + 'px');
+//
+//           }
+//           imgTOcenter();
         </script>
 
     </body>

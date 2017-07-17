@@ -88,7 +88,7 @@
 
             function viewformatter(cellvalue) {
 //                return "<a href='viewDetailTransactionExplorer.action?transactionID=" + cellvalue + "' title='View Transaction' ><img class='ui-icon ui-icon-newwin' style='display: block;margin-left: auto;margin-right: auto;'/></a>";
-                return "<a href='#' title='Action' onClick='javascript:viewActionInit(&#34;" + cellvalue + "&#34;)'><img class='ui-icon ui-icon-newwin' style='display: block;margin-left: auto;margin-right: auto;'/></a>";
+                return "<a href='#' title='Action' onClick='javascript:viewActionInit(&#34;" + cellvalue + "&#34;)'><img width='auto' height='13' src='${pageContext.request.contextPath}/resources/images/view.svg'/></a>";
             }
             function viewActionInit(keyval) {
                 $("#viewdialog").data('sid', keyval).dialog('open');
