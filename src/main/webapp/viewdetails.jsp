@@ -147,7 +147,7 @@
                     </table>
                 </div>
                 <div id="img" style="float: right">
-                    <div id="container" style="border: 5px solid #e9e9e9;width: 410px;height: 410px;">
+                    <div id="container" style="border: 5px solid #e9e9e9;width: 410px;height: auto;">
                         <img o id="imageID" style="border: 0px solid #e9e9e9" width="400" height="auto" src="data:image/jpeg;base64,<s:property value="actionBean.imgBase"/>" alt="User Image" >
 
                     </div>
