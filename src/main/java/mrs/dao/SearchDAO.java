@@ -14,7 +14,6 @@ import java.io.InputStream;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -28,7 +27,6 @@ import mrs.bean.CsvBean;
 import mrs.bean.LatLngBean;
 import mrs.bean.SearchDataBean;
 import mrs.bean.SearchInputBean;
-import mrs.bean.SearchSetBean;
 import mrs.bean.SummaryBean;
 import mrs.common.dao.CommonDAO;
 import mrs.listener.HibernateInit;
@@ -579,6 +577,8 @@ public class SearchDAO {
 
 //                this.getCSVDATAall();
 //                this.getDataForSummary();
+            }else{
+                sessionHTTP.setAttribute("CSV_QUERY_LIST_DATA", null);
             }
 
         } catch (Exception e) {
@@ -629,7 +629,7 @@ public class SearchDAO {
 
         List<Object[]> list = (List<Object[]>) sessionHTTP.getAttribute("CSV_QUERY_LIST_DATA");
 
-        sessionHTTP.setAttribute("CSV_QUERY_LIST_DATA", null);
+        
 
         if (list != null) {
 

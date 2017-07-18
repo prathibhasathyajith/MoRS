@@ -12,7 +12,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -240,26 +239,25 @@ public class SearchAction extends ActionSupport implements ModelDriven<Object> {
 
     public String ViewPopup() {
         System.out.println("called SearchAction : ViewPopup");
-            System.out.println("sid " +inputBean.getSid() );
         try {
             HttpSession session = ServletActionContext.getRequest().getSession(false);
             List<SearchDataBean> datalist = (List<SearchDataBean>) session.getAttribute("SEARCH_BEAN");
 
             SearchDAO dao = new SearchDAO();
             List<ActionBean> Actdatalist = dao.getActionList(inputBean.getSid());
-            
+
             List<QandAbean> q_and_aList = new ArrayList<QandAbean>();
-            
+
             inputBean.setActionBean(Actdatalist.get(0));
-            
+
             for (ActionBean actionBean : Actdatalist) {
                 QandAbean qNa = new QandAbean();
                 qNa.setQues(actionBean.getQuestion());
                 qNa.setAnsw(actionBean.getAnswer());
-                
+
                 q_and_aList.add(qNa);
             }
-            
+
             inputBean.setQuestionAnswer(q_and_aList);
 
         } catch (Exception e) {
@@ -424,7 +422,7 @@ public class SearchAction extends ActionSupport implements ModelDriven<Object> {
                         datalist.get(i).getIdno() + ","
                         + datalist.get(i).getSid() + ","
                         + datalist.get(i).getUser() + ","
-                        + datalist.get(i).getTimeStamp() + ","
+                        + datalist.get(i).getTimeStamp().substring(0, 19) + ","
                         + datalist.get(i).getProvince() + ","
                         + datalist.get(i).getDistrict() + ","
                         + cdao.getLAfromCode(datalist.get(i).getLocalAuthority()) + ","
