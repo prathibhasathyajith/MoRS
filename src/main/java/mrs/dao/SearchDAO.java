@@ -1188,7 +1188,7 @@ public class SearchDAO {
                 inputBean.getRevenueSourceList().add(rc);
             }
 
-            String hql2 = "from RevenueSource as t where t.code !=:code order by Upper(t.description) asc";
+            String hql2 = "from RevenueSource as t where t.code !=:code order by t.createdTime asc";
             Query query2 = session.createQuery(hql2).setString("code", rscode);
             rvList = (List<RevenueSource>) query2.list();
 
@@ -1385,7 +1385,7 @@ public class SearchDAO {
         Session session = null;
         try {
             session = HibernateInit.sessionFactory.openSession();
-            String hql = "from RevenueSource as t order by Upper(t.description) asc";
+            String hql = "from RevenueSource as t order by t.createdTime asc";
             Query query = session.createQuery(hql);
             gList = (List<RevenueSource>) query.list();
 
