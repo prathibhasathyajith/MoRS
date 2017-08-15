@@ -197,8 +197,8 @@
 
             function dialog() {
                 $("#dialog").dialog({
-                    height: 600,
-                    width: 800,
+                    height: 650,
+                    width: 900,
                     modal: true,
                     close: function () {
                         $('#dialog').dialog('destroy');
@@ -557,7 +557,7 @@
                 title="Details"
                 onOpenTopics="openviewtasktopage" 
                 loadingText="Loading .."
-                width="900"
+                width="980"
                 height="520"
                 dialogClass= "dialogclass"
 

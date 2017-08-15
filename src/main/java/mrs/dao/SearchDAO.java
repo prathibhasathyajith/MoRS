@@ -629,7 +629,6 @@ public class SearchDAO {
 
         List<Object[]> list = (List<Object[]>) sessionHTTP.getAttribute("CSV_QUERY_LIST_DATA");
 
-        
 
         if (list != null) {
 
@@ -671,8 +670,11 @@ public class SearchDAO {
                     record.add(String.valueOf(Bean[6]));
                     record.add(String.valueOf(Bean[7]));
                     record.add(String.valueOf(Bean[11]));
-                    record.add(String.valueOf(Bean[3]));
-
+                    if(Bean[3]!=null){
+                        record.add(String.valueOf(Bean[3]));
+                    }else{
+                        record.add(String.valueOf("--"));
+                    }
                     records.add(record);
 
                 }

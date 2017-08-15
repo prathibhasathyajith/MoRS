@@ -7,13 +7,13 @@
     <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/survey3?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true</property>-->
     <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/survey4?autoReconnect=true&amp;useSSL=false</property>-->
     <!--<property name="hibernate.connection.username">root</property>-->
-    <property name="hibernate.connection.password"/>
+    <!--<property name="hibernate.connection.password"/>-->
     <!--<property name="hibernate.connection.isolation">1</property>-->
     <property name="hibernate.connection.datasource">MRSJNDI2</property>
     <!--<property name="hibernate.connection.verifyServerCertificate">false</property>-->
     <!--<property name="hibernate.connection.requireSSL">false</property>-->
-    <property name="hibernate.connection.autocommit">true</property>
-    <property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+    <!--<property name="hibernate.connection.autocommit">true</property>-->
+    <!--<property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property>-->
     <!-- Enable Hibernate's automatic session context management, in this case the session will be close after each 
         transaction! -->
     <property name="current_session_context_class">thread</property>
