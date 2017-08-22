@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-  <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <!--<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>-->
-    <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/survey3?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true</property>-->
-    <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/survey4?autoReconnect=true&amp;useSSL=false</property>-->
-    <!--<property name="hibernate.connection.username">root</property>-->
-    <!--<property name="hibernate.connection.password"/>-->
-    <!--<property name="hibernate.connection.isolation">1</property>-->
-    <property name="hibernate.connection.datasource">MRSJNDI2</property>
-    <!--<property name="hibernate.connection.verifyServerCertificate">false</property>-->
-    <!--<property name="hibernate.connection.requireSSL">false</property>-->
-    <!--<property name="hibernate.connection.autocommit">true</property>-->
-    <!--<property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property>-->
-    <!-- Enable Hibernate's automatic session context management, in this case the session will be close after each 
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/survey3?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true</property>-->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/survey4?autoReconnect=true&amp;useSSL=false</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"/>
+        <!--<property name="hibernate.connection.isolation">1</property>-->
+        <!--<property name="hibernate.connection.datasource">MRSJNDI2</property>-->
+        <!--<property name="hibernate.connection.verifyServerCertificate">false</property>-->
+        <!--<property name="hibernate.connection.requireSSL">false</property>-->
+        <property name="hibernate.connection.autocommit">true</property>
+        <property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+        <!-- Enable Hibernate's automatic session context management, in this case the session will be close after each 
         transaction! -->
-    <property name="current_session_context_class">thread</property>
-    <property name="show_sql">false</property>
-    <!-- auto create tables -->
-    <property name="hbm2ddl.auto">none</property>
+        <property name="current_session_context_class">thread</property>
+        <property name="show_sql">false</property>
+        <!-- auto create tables -->
+        <property name="hbm2ddl.auto">none</property>
     
-    <mapping class="mrs.mapping.UserAnswer"/>
-    <mapping class="mrs.mapping.UserType"/>
-    <mapping class="mrs.mapping.Question"/>
-    <mapping class="mrs.mapping.User"/>
-    <mapping class="mrs.mapping.Answer"/>
-    <mapping class="mrs.mapping.SocialMediaType"/>
-    <mapping class="mrs.mapping.RevenueSource"/>
-    <mapping class="mrs.mapping.LocalAuthority"/>
-    <mapping class="mrs.mapping.District"/>
-    <mapping class="mrs.mapping.Gnd"/>
-    <mapping class="mrs.mapping.SurveyData"/>
+        <mapping class="mrs.mapping.UserAnswer"/>
+        <mapping class="mrs.mapping.UserType"/>
+        <mapping class="mrs.mapping.Question"/>
+        <mapping class="mrs.mapping.User"/>
+        <mapping class="mrs.mapping.Answer"/>
+        <mapping class="mrs.mapping.SocialMediaType"/>
+        <mapping class="mrs.mapping.RevenueSource"/>
+        <mapping class="mrs.mapping.LocalAuthority"/>
+        <mapping class="mrs.mapping.District"/>
+        <mapping class="mrs.mapping.Gnd"/>
+        <mapping class="mrs.mapping.SurveyData"/>
         <mapping class="mrs.mapping.Province"/>
 
 
-  </session-factory>
+    </session-factory>
 </hibernate-configuration>

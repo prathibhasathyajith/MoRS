@@ -17,18 +17,6 @@
             10
         </session-timeout>
     </session-config>
-    <error-page>
-        <error-code>404</error-code>
-        <location>/login.jsp</location>
-    </error-page>
-    <error-page>
-        <error-code>500</error-code>
-        <location>/login.jsp</location>
-    </error-page>
-    <error-page>
-        <error-code>505</error-code>
-        <location>/login.jsp</location>
-    </error-page> 
     <welcome-file-list>
         <welcome-file>welcomepage.jsp</welcome-file>
     </welcome-file-list>

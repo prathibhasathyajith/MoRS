@@ -92,7 +92,7 @@
         </style>
     </head>
     <body>
-        <div class="container" style="width: 850px;margin-top: 10px">
+        <div class="container" style="width: 950px;margin-top: 10px">
             <div id="aa">
 
                 <div class="text-left" style="float: left">
