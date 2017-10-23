@@ -54,7 +54,7 @@ public class CommonDAO {
         try {
             session = HibernateInit.sessionFactory.openSession();
 //            String hql = "from Question as t order by Upper(t.revenueSource) asc";
-            String hql = "select q.revenueSource,q.QCode,q.question,q.createdTime from Question q JOIN q.revenueSource rs  WHERE q.revenueSource =rs.code ORDER BY rs.createdTime asc";
+            String hql = "select q.revenueSource,q.QCode,q.question,q.createdTime from Question q JOIN q.revenueSource rs  WHERE q.revenueSource =rs.code ORDER BY q.createdTime asc";
 
             Query query = session.createQuery(hql);
             List<Object[]> qListObj = (List<Object[]>) query.list();
@@ -92,7 +92,7 @@ public class CommonDAO {
         try {
             session = HibernateInit.sessionFactory.openSession();
 //            String hql = "from Question as t order by t.revenueSource asc";
-            String hql = "select q.revenueSource,q.QCode,q.question,q.createdTime from Question q JOIN q.revenueSource rs  WHERE q.revenueSource =rs.code ORDER BY rs.createdTime asc";
+            String hql = "select q.revenueSource,q.QCode,q.question,q.createdTime from Question q JOIN q.revenueSource rs  WHERE q.revenueSource =rs.code ORDER BY q.createdTime asc";
 
             Query query = session.createQuery(hql);
             qListx = (List<Object[]>) query.list();

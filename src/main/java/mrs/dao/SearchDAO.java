@@ -501,7 +501,7 @@ public class SearchDAO {
             BigInteger count = (BigInteger) countList.get(0);
 
             if (count.longValue() > 0) {
-                String sqlQ = this.MAIN_SQL + " where " + where + " ";
+                String sqlQ = this.MAIN_SQL + " where " + where + " order by q.CREATED_TIME asc";
                 List<Object[]> chequeList = (List<Object[]>) session.createSQLQuery(sqlQ).list();
                 sessionHTTP.setAttribute("CSV_QUERY_LIST_DATA", chequeList);
 
@@ -707,7 +707,6 @@ public class SearchDAO {
                 csvfile.setqList(this.getQAListForSID(records.get(i).get(0), csv));
 
                 CsvBeanList.add(csvfile);
-
             }
 //        CommonDAO dao = new CommonDAO();
 //        System.out.println("qlist " +  dao.getQuestionListMap()) ;
@@ -806,6 +805,7 @@ public class SearchDAO {
 
         for (ArrayList<String> arrayList : array) {
 
+            System.out.println("aa " + arrayList);
             if (arrayList.get(0).equals(SID)) {
                 if (QAlist.containsKey(arrayList.get(9))) {
                     QAlist.put(arrayList.get(9), "YES");
